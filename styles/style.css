@@ -1,0 +1,324 @@
+/*
+filename: Paras Sood;
+author: Paras Sood;
+created: 24/02/2021;
+last modified: 08/03/2021;
+description: stylesheet for the purposes of assignment 1;
+*/
+
+* {
+	font-family: calabri, sans-serif;
+	color: #05386B;
+}
+
+body {
+	background: #5CDB95;
+}
+
+header{
+	margin: 0.5em;
+	text-align:right;
+}
+
+
+#main_heading{
+	background-image: url('images/back_image.webp');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	text-align: center;
+    padding:5em;
+    height:18em;
+    width: 86%;
+    margin:0.5em 0em 0.5em 0.5em;
+}
+
+#head_1,#head_2{
+	font-size:1.5em;
+	display: inline-block;
+ 	color:#EDF5E1;
+ 	background-color: #05386B;
+ 	width:auto;
+}
+
+
+nav{
+	text-align: right;
+	border-radius: 25px;
+    margin: auto;
+}
+
+nav p{
+	width: auto;
+}
+nav a {
+    font-size: 18px;
+    height: 30px;
+    padding: 4px ;
+    width: 100%;
+    display: inline-block;
+    vertical-align:middle;
+    text-align: center;
+    text-decoration: none;
+}
+
+.menu {
+  display:inline-block;
+  padding: 0.1px 10px;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.menu a {
+	text-align: left;
+}
+
+.menu:hover {
+	background-color: #3e8e41
+}
+
+/*Enhancement 1*/
+.menu:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+aside{
+	margin:1em;
+	padding:1em;
+	height: auto;
+  	width: 25%;
+  	float:right;
+  	background-color: #379683;
+  	border: 4px inset green;
+	border-radius: 14px;
+}
+
+
+#job_heading_1{
+  font: italic small-caps bold 2.5em Georgia, serif;
+}
+
+/*about picture*/
+#ps{
+	width: 20%;
+	height:20%;
+	border: 3px inset green;
+	float:right;
+}
+
+td,th{
+	border:2px solid;
+	background-color: #EDF5E1;
+}
+
+table{
+	text-align:center;
+}
+
+/*class for images displayed on index page*/
+.usp{
+	display: inline-block;
+	float:left;
+	width: 24%;
+	text-align: center;
+	padding: 5px;
+}
+
+.usp h3{
+	width:30$;
+}
+
+
+
+ol,ul,dl{
+	text-align: left
+}
+
+dl {
+  width: 50%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0
+}
+
+dt {
+  float:left;
+  width:35%;
+  font-weight:bold;
+  color:green;
+}
+
+dd {
+	float:left;
+	width: 25%;
+}
+
+.job_list{
+	padding-right:1em; 
+	margin:1em;
+}
+
+#timetable, #timetable_section{
+	clear:both;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+}
+
+#application_form{
+    color: #32CD32;
+    background: #32CD32;
+    width: 30%;
+    margin-left: 30px;
+    margin-top:40px;
+    padding: 20px;
+    font-size:1.2em;
+    border: 4px inset green;
+	border-radius: 14px;
+}
+
+.input_form{
+	width: 100%;
+	padding-right:2px;
+}
+
+#application_form h1{
+	text-align: center;
+}
+
+#logo{
+	float: left;
+	margin-left: 16em;
+	margin-top:0;
+	margin-right: 0;
+	padding: 0;
+}
+
+#enhance{
+	margin-top: 1em;
+	clear: both;
+	text-align: left;
+}
+
+#enhancement_js_1 h2{
+	text-align: center;
+}
+
+footer{
+	border-top: 4px double;
+	clear:both;
+	font-style: italic;
+	font-size: small;
+	width:100%;
+	line-height: 2em;
+	text-align:center; 
+}
+
+/*change the selection colour to red and yellow*/
+::selection {
+  color: red;
+  background: yellow;
+}
+
+/*to ensure smooth flow when the browser is resized. Reference: https://www.w3schools.com/html/html_responsive.asp*/
+@media screen and (max-width:800px) {
+  body {
+    width:100%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
+}
+
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#openSideNav{
+	float:left;
+	width:auto;
+	font-size:15px;
+}
+
+#mySidenav{
+	margin-right:5px;
+}
+/* On smaller screens, decrease text size */
+/*@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}*/
+
+/*.mySlides {display: none}*/
