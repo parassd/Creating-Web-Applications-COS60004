@@ -62,7 +62,6 @@
 		<p>
 			<label for = "state">State</label><br>
 			<select name = "state" id = "state">
-				<option value = "">Please Select</option>
 				<option value = "VIC">VIC</option>
 				<option value = "NSW">NSW</option>
 				<option value = "QLD">QLD</option>
@@ -90,7 +89,7 @@
 			<legend>Skills</legend>
 			<p>
 				<label for = "checked_button_1">HTML</label>
-				<input type = "checkbox" name = "skills[]" value = "HTML" id = "skills" checked = "checked">
+				<input type = "checkbox" name = "skills[]" value = "HTML" id = "skills">
 				<label for = "checked_button_2">CSS</label>
 				<input type = "checkbox" name = "skills[]" value = "CSS" id = "skills">
 				<label for = "checked_button_3">JavaScript</label>

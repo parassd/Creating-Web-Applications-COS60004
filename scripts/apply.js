@@ -165,118 +165,118 @@ function loadData(){
 	 }
 }
 
-// function validate(){
-// 	var error_message = "";
-// 	var result = true;
+function validate(){
+	var error_message = "";
+	var result = true;
 
-// 	// Get Values from Form
-// 	var fname = document.getElementById("first_name").value.trim();
-// 	var lname = document.getElementById("last_name").value.trim();
-// 	var dob = document.getElementById("dob").value.trim();
-// 	// set default value for gender
-// 	document.getElementById("radio_button_1").checked = true;
-// 	var street_address = document.getElementById("street_address").value.trim();
-// 	var suburb = document.getElementById("suburb").value.trim();
-// 	// get checkbox element and check for validation
-// 	var postcode = document.getElementById("postcode").value.trim();
-// 	var email = document.getElementById("email").value.trim();
-// 	var phone = document.getElementById("phone").value.trim();
-// 	var age = getAgeInYears();
-// 	var state = document.getElementById("state").value.trim();
-// 	// check for skills
-// 	var other_skills = document.getElementById("other_skills").value.trim();
-// 	var other_skills_text = document.getElementById("other_skill_text").value.trim();
+	// Get Values from Form
+	var fname = document.getElementById("first_name").value.trim();
+	var lname = document.getElementById("last_name").value.trim();
+	var dob = document.getElementById("dob").value.trim();
+	// set default value for gender
+	document.getElementById("radio_button_1").checked = true;
+	var street_address = document.getElementById("street_address").value.trim();
+	var suburb = document.getElementById("suburb").value.trim();
+	// get checkbox element and check for validation
+	var postcode = document.getElementById("postcode").value.trim();
+	var email = document.getElementById("email").value.trim();
+	var phone = document.getElementById("phone").value.trim();
+	var age = getAgeInYears();
+	var state = document.getElementById("state").value.trim();
+	// check for skills
+	var other_skills = document.getElementById("other_skills").value.trim();
+	var other_skills_text = document.getElementById("other_skill_text").value.trim();
 	
-// 	// location where error message is displayed
-// 	var message = document.getElementById("message");
+	// location where error message is displayed
+	var message = document.getElementById("message");
 	
 
-// 	// Name Validation
-// 	if(fname == ""){
-// 		error_message+= "First name is required<br/>";
-// 	}else if (!fname.match(/^[a-zA-Z ]+$/)){
-// 		error_message+= "Please enter a string for first name<br/>";
-// 	}else if (fname.length>20){
-// 		error_message+= "First name must be less than 20 characters<br/>";	
-// 	}
+	// Name Validation
+	if(fname == ""){
+		error_message+= "First name is required<br/>";
+	}else if (!fname.match(/^[a-zA-Z ]+$/)){
+		error_message+= "Please enter a string for first name<br/>";
+	}else if (fname.length>20){
+		error_message+= "First name must be less than 20 characters<br/>";	
+	}
 
-// 	if (lname == ""){
-// 		error_message+= "Last name is required <br/>";
-// 	}else if (!lname.match(/^[a-zA-Z ]+$/)){
-// 		error_message+= "Please enter a string for last name<br/>";
-// 	}
+	if (lname == ""){
+		error_message+= "Last name is required <br/>";
+	}else if (!lname.match(/^[a-zA-Z ]+$/)){
+		error_message+= "Please enter a string for last name<br/>";
+	}
 
-// 	// dob validation
-// 	if(dob == ""){
-// 		error_message+= "Date of birth is required<br/>";
-// 	}else if (!dob.match(/(((0|1)[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)\d\d))$/)){
-// 		error_message+= "Date of birth must be of the format DD/MM/YYYY<br/>";	
-// 	}
+	// dob validation
+	if(dob == ""){
+		error_message+= "Date of birth is required<br/>";
+	}else if (!dob.match(/(((0|1)[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)\d\d))$/)){
+		error_message+= "Date of birth must be of the format DD/MM/YYYY<br/>";	
+	}
 
-// 	// age validation
-// 	if (age<0){
-// 		error_message+="Invalid age<br/>";
-// 	}else if (age<15 || age>80){
-// 		error_message+="Applicant must be between 15 and 80 years old at the time of filling this form.<br/>";
-// 	}
+	// age validation
+	if (age<0){
+		error_message+="Invalid age<br/>";
+	}else if (age<15 || age>80){
+		error_message+="Applicant must be between 15 and 80 years old at the time of filling this form.<br/>";
+	}
 
-// 	// address validation
-// 	if (street_address == ""){
-// 		error_message+= "Street address is required<br/>";
-// 	}else if (!street_address.match(/^[0-9a-zA-Z ]+$/)){
-// 		error_message+="Please enter a string for street address<br/>";
-// 	}else if (street_address.length > 40){
-// 		error_message+= "Street address limit is 40 characters<br/>";
-// 	}
+	// address validation
+	if (street_address == ""){
+		error_message+= "Street address is required<br/>";
+	}else if (!street_address.match(/^[0-9a-zA-Z ]+$/)){
+		error_message+="Please enter a string for street address<br/>";
+	}else if (street_address.length > 40){
+		error_message+= "Street address limit is 40 characters<br/>";
+	}
 
-// 	if (suburb == ""){
-// 		error_message+= "Suburb is required<br/>";
-// 	}else if (!suburb.match(/^[a-zA-Z ]+$/)){
-// 		error_message+="Please enter a string for suburb<br/>";
-// 	}else if (suburb.length > 40){
-// 		error_message+= "Suburb limit is 40 characters<br/>";
-// 	}
+	if (suburb == ""){
+		error_message+= "Suburb is required<br/>";
+	}else if (!suburb.match(/^[a-zA-Z ]+$/)){
+		error_message+="Please enter a string for suburb<br/>";
+	}else if (suburb.length > 40){
+		error_message+= "Suburb limit is 40 characters<br/>";
+	}
 
-// 	if (state == ""){
-// 		error_message+="Please select a state<br/>";
-// 	}
+	if (state == ""){
+		error_message+="Please select a state<br/>";
+	}
 
-// 	if (postcode == ""){
-// 		error_message+="Postcode is required<br/>";
-// 	}else if (!postcode.match(/\d{4}/) || postcode.length!=4){
-// 		error_message+= "Postcode must be exactly 4 digits<br/>";
-// 	}else if (validatePostcode(state, postcode)!=""){
-// 		error_message+=validatePostcode(state, postcode)+"<br/>";
-// 	}
+	if (postcode == ""){
+		error_message+="Postcode is required<br/>";
+	}else if (!postcode.match(/\d{4}/) || postcode.length!=4){
+		error_message+= "Postcode must be exactly 4 digits<br/>";
+	}else if (validatePostcode(state, postcode)!=""){
+		error_message+=validatePostcode(state, postcode)+"<br/>";
+	}
 
-// 	if (email == ""){
-// 		error_message+= "Email is required<br/>";
-// 	}else if (!email.match(/^.+@.+\..{2,3}$/)){
-// 		error_message+= "Please enter valid email<br/>";	
-// 	}
+	if (email == ""){
+		error_message+= "Email is required<br/>";
+	}else if (!email.match(/^.+@.+\..{2,3}$/)){
+		error_message+= "Please enter valid email<br/>";	
+	}
 
-// 	// phone number validation
-// 	if (phone == ""){
-// 		error_message+= "Phone number is required<br/>";
-// 	}else if (phone.length<8 || phone.length>12){
-// 		error_message+= "Please enter a phone number between 8 to 12 digits.<br/>";
-// 	}
+	// phone number validation
+	if (phone == ""){
+		error_message+= "Phone number is required<br/>";
+	}else if (phone.length<8 || phone.length>12){
+		error_message+= "Please enter a phone number between 8 to 12 digits.<br/>";
+	}
 
-// 	if (this.other_skills.checked && other_skills_text == ""){
-// 		error_message+= "Other skills are required<br/>";
-// 	}
+	if (this.other_skills.checked && other_skills_text == ""){
+		error_message+= "Other skills are required<br/>";
+	}
 
-// 	// display error message
-// 	if (error_message != ""){
-// 		result = false;
-// 		message.innerHTML = error_message;
-// 		message.style.color = "red";
-// 	}else{
-// 		storeData(fname,lname,dob,street_address,suburb,postcode,email,phone,state,other_skills_text);
-// 	}
+	// display error message
+	if (error_message != ""){
+		result = false;
+		message.innerHTML = error_message;
+		message.style.color = "red";
+	}else{
+		storeData(fname,lname,dob,street_address,suburb,postcode,email,phone,state,other_skills_text);
+	}
 
-// 	return result;
-// }
+	return result;
+}
 
 
 function init(){
