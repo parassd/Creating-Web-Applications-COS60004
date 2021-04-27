@@ -42,28 +42,6 @@
 	}
 
 	// validate Date of birth
-	// if (isset($_POST["dob"])){
-	// 	$dob = $_POST["dob"];
-	// 	if ($dob == ""){
-	// 		$errmsg .= "Date of birth is required. <br>";
-	// 	}
-		
-	// 	// check regex 
-	// 	elseif (preg_match($dob_pattern,$dob)!=1){
-	// 	$errmsg .= "Date of birth must be of format dd/mm/yyyy. <br>";	
-	// 	}
-	// 	else{
-	// 		// Calculate the age
-	// 		// $dob = DateTime::createFromFormat('d/m/Y', $dob);
-	// 		$birthdate = new DateTime($dob);
-	// 		$today = new DateTime(date('d.m.y'));
-	// 		$age = $today -> diff ($dob);
-	// 		if ($age -> y < 15 || $age -> y > 80){
-	// 			$errmsg.= "Age should be between 15 and 80 <br>";
-	// 		}
-	// 	}
-	// 	$dob = date('Y-m-d',strtotime($dob));
-	// }
 	$dob_pattern = "/(((0|1)[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)\d\d))$/";
 	$dob = $_POST["dob"];
         if(isset($dob))
