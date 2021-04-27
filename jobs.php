@@ -63,7 +63,7 @@
  							<li>Reference from <a href = "https://www.seek.com.au/job/51564290?type=promoted#searchRequestToken=37c540f8-4b66-4cfa-9597-97f294394eac">Seek </a></li>
  							<li><a href="apply.php" id = "ABCDE"class = "apply_links">Apply now!</a></li>
  						</ul>
-					<li class = "job_list"><strong>Reference number: AB234D</strong>
+					<li class = "job_list"><strong>Reference number: AB234</strong>
  						<ul>
  							<li><strong>Title:</strong> Senior IT Technician</li>
  							<li><strong>Description:</strong> We are growing and we need to expand the team to meet the demands of the business and its clients. We have a number of roles available including the role of Senior IT Technician or Consultant working from our Frenchs Forest office.  The role is a great opportunity for an experienced IT Technician to move to the next level in their career and join an established IT services business.</li>
@@ -90,7 +90,7 @@
  								</ul>
  							</li>
  							<li>Reference from <a href = "https://www.seek.com.au/job/51691035?type=standard#searchRequestToken=37c540f8-4b66-4cfa-9597-97f294394eac">Seek </a></li>
- 							<li><a href="apply.php" id = "AB234D" class = "apply_links">Apply now!</a></li>
+ 							<li><a href="apply.php" id = "AB234" class = "apply_links">Apply now!</a></li>
  						</ul>
  					</li>
  				</ol>
