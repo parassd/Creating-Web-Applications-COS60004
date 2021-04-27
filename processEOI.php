@@ -42,32 +42,59 @@
 	}
 
 	// validate Date of birth
-	$dob_pattern = "/(((0|1)[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)\d\d))$/";
-	if (isset($_POST["dob"])){
-		$dob = $_POST["dob"];
-		$dob = sanitise_input($dob);
-		if ($dob == ""){
-			$errmsg .= "Date of birth is required. <br>";
-		}
+	// if (isset($_POST["dob"])){
+	// 	$dob = $_POST["dob"];
+	// 	if ($dob == ""){
+	// 		$errmsg .= "Date of birth is required. <br>";
+	// 	}
 		
-		// check regex 
-		elseif (preg_match($dob_pattern,$dob)!=1){
-		$errmsg .= "Date of birth must be of format dd/mm/yyyy. <br>";	
-		}
-		else{
-			// Calculate the age
-			$dob = new DateTime($dob); 
-			$today = new DateTime(date('d.m.y'));
-			$age = $today -> diff ($dob);
-			if ($age -> y < 15 || $age -> y > 80){
-				$errmsg.= "Age should be between 15 and 80 <br>";
+	// 	// check regex 
+	// 	elseif (preg_match($dob_pattern,$dob)!=1){
+	// 	$errmsg .= "Date of birth must be of format dd/mm/yyyy. <br>";	
+	// 	}
+	// 	else{
+	// 		// Calculate the age
+	// 		// $dob = DateTime::createFromFormat('d/m/Y', $dob);
+	// 		$birthdate = new DateTime($dob);
+	// 		$today = new DateTime(date('d.m.y'));
+	// 		$age = $today -> diff ($dob);
+	// 		if ($age -> y < 15 || $age -> y > 80){
+	// 			$errmsg.= "Age should be between 15 and 80 <br>";
+	// 		}
+	// 	}
+	// 	$dob = date('Y-m-d',strtotime($dob));
+	// }
+	$dob_pattern = "/(((0|1)[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)\d\d))$/";
+	$dob = $_POST["dob"];
+        if(isset($dob))
+        {
+        	if ($dob == ""){
+				$errmsg .= "Date of birth is required. <br>";
 			}
-		}
-	}
+			// check regex 
+			elseif (preg_match($dob_pattern,$dob)!=1){
+				$errmsg .= "Date of birth must be of format dd/mm/yyyy. <br>";	
+			}
+			else{
+				$dob = strtr($dob, '/', '-');
+	            $birthday = DateTime::createFromFormat('d-m-Y', $dob);
+	            $today = new DateTime(date('d-m-Y'));
+	            $age = $today->diff($birthday); // The value between birthday and today
+	            if($age->y < 15 || $age->y > 80) {
+	                $error .= "Age should be between 15 and 80! <br/>";
+	            }
+	            $dob = date("Y-m-d", strtotime($dob));     // to be in proper format when entering the database	
+	            echo "<p>'$dob'</p>";
+			}
+            
+        } else {
+            $error .= "Date of Birth is required. </br>";
+        }
+
 
 	// validate gender
+	$gender = $_POST["gender"];
 	if (!isset($_POST["gender"])){
-		$gender = $_POST["gender"];
 		$errmsg .="Gender should be selected. <br>";
 	}
 
@@ -84,8 +111,8 @@
 	}
 
 	// validate suburb/town
+	$suburb = $_POST["suburb"];
 	if (isset($_POST["suburb"])){
-		$suburb = $_POST["suburb"];
 		$suburb = sanitise_input($suburb);
 		if ($suburb == ""){
 			$errmsg .= "Suburb is required. <br>";
@@ -97,8 +124,8 @@
 
 
 	// validate postcode
+	$postcode = $_POST["postcode"];
 	if (isset($_POST["postcode"])){
-		$postcode = $_POST["postcode"];
 		$postcode = sanitise_input($postcode);
 		if($postcode == ""){
 			$errmsg .= "Postcode is required. <br>";
@@ -149,8 +176,8 @@
 
 
 	// validate phone number
+	$phone = $_POST["phone"];
 	if (isset($_POST["phone"])){
-		$phone = $_POST["phone"];
 		$phone = sanitise_input($phone);
 		if (empty($_POST["phone"])){
 			$errmsg .= "Mobile is required. <br>";
@@ -166,24 +193,27 @@
 	}
 	
 	// validate other skills box
+	$otherskills = $_POST["other_skill_text"];
 	if (isset($_POST["other_skill_text"])){
-		$otherskills = $_POST["other_skill_text"];
 		$otherskills = sanitise_input($otherskills);
 	}
-	if (count($_POST["skills"])==0){
+	if (isset($_POST["skills"])){
+		if (count($_POST["skills"])==0){
 		$errmsg .= "No skills selected. <br>";
 	}
-	else{
-		$skills = "";
-		foreach($_POST["skills"] as $sk){
-			if ($sk == "otherskills" && empty ($otherskills)){
-				$errmsg .= "Other skills is required. <br>";
+		else{
+			$skills = "";
+			foreach($_POST["skills"] as $sk){
+				if ($sk == "otherskills" && empty ($otherskills)){
+					$errmsg .= "Other skills is required. <br>";
+				}
+				if ($sk != "otherskills"){
+					$skills .= ($sk.",");
+				}
 			}
-			if ($sk != "otherskills"){
-				$skills .= ($sk.",");
-			}
-		}
+		}	
 	}
+	
 
 	// Make Decision
 	if ($errmsg != ""){
@@ -193,8 +223,15 @@
 	else{
 		// Connect to mySQL
 		require_once("settings.php");
-		$query = "CREATE TABLE IF NOT EXISTS eoi (eoinumber int(4) auto_increment PRIMARY KEY, job_reference_number VARCHAR(5), first_name VARCHAR(20), last_name VARCHAR(20), gender VARCHAR(1), date_of_birth DATE, street_address VARCHAR(40), suburb VARCHAR(40), state VARCHAR(3), postcode VARCHAR(4), email_address VARCHAR(30), phone_number VARCHAR(15), skills VARCHAR(100), other_skills VARCHAR(100))";
-
+		// $dob = DateTime::createFromFormat('Y/m/d', $dob);
+		// $dob_new = date("Y-m-d", strtotime($dob));
+		// $query = "CREATE TABLE IF NOT EXISTS eoi (eoinumber int(4) auto_increment PRIMARY KEY, job_reference_number VARCHAR(5), first_name VARCHAR(20), last_name VARCHAR(20), gender VARCHAR(1), date_of_birth VARCHAR(15), street_address VARCHAR(40), suburb VARCHAR(40), state VARCHAR(3), postcode VARCHAR(4), email_address VARCHAR(30), phone_number VARCHAR(15), skills VARCHAR(100), other_skills VARCHAR(100))";
+		$query = "CREATE TABLE IF NOT EXISTS eoi (eoinumber int(4) auto_increment PRIMARY KEY, job_reference_number VARCHAR(5), first_name VARCHAR(20), last_name VARCHAR(20), gender VARCHAR(7), street_address VARCHAR(40), suburb VARCHAR(40), state VARCHAR(3), postcode VARCHAR(4), email_address VARCHAR(30), phone_number VARCHAR(15), skills VARCHAR(100), other_skills VARCHAR(100), dob DATE, app_date DATE, status VARCHAR(10));";
+		// Check connection
+		if ($connObj->connect_error) {
+		  die("Connection failed: " . $conn->connect_error);
+		}
+		echo "Connected successfully";
 		$result = mysqli_query($connObj,$query);
 		if (!$result){
 			die("Query statement Error (".$connObj->errno.")");
@@ -203,14 +240,21 @@
 			echo"<p> Table created successfully.</p>";
 		}
 		// Insert eoi record to eoi table
-		echo"<p>reached to query</p>";
-		$query = "INSERT INTO `eoi` (`job_reference_number`, `first_name`, `last_name`, `gender`, `date_of_birth`,`street_address`, `suburb`, `state`, `postcode`, `email_address`, `phone_number`, `skills`, `other_skills`) VALUES ('$ref_id','$fname','$lname','$gender','$dob','$street_address','$suburb','$state','$postcode','$email','$phone','$skills','$otherskills')";
-		echo"<p>query executed</p>";
-		$result = mysqli_query($connObj,$query);
+		$query = "INSERT INTO `eoi` (`job_reference_number`, `first_name`, `last_name`, `gender`,`street_address`, `suburb`, `state`, `postcode`, `email_address`, `phone_number`, `skills`, `other_skills`, `dob`, `app_date`, `status`) VALUES ('$ref_id','$fname','$lname','$gender','$street_address','$suburb','$state','$postcode','$email','$phone','$skills','$otherskills','$dob',CURDATE(),'New')";
+		// $query = "INSERT INTO `eoi` (`job_reference_number`, `first_name`, `last_name`, `gender`,`street_address`, `suburb`, `state`, `postcode`, `email_address`, `phone_number`, `skills`, `other_skills`) VALUES ('$ref_id','$fname','$lname','$gender','$street_address','$suburb','$state','$postcode','$email','$phone','$skills','$otherskills')";
+		// $query = "INSERT INTO `eoi` VALUES (`$ref_id`,`$fname`,`$lname`,`$gender`,`$dob`,`$street_address`,`$suburb`,`$state`,`$postcode`,`$email`,`$phone`,`$skills`,`$otherskills`)";
+		// $query = "INSERT INTO eoi VALUES (NULL)";
+		$result = @mysqli_query($connObj,$query);
 		if ($result){
 			echo "<p>Your EOI inserted successfully.</p>";
+			// Display the autogenerate EOI number
+			$query = "SELECT eoinumber FROM `eoi` WHERE `job_reference_number` = '$ref_id' AND `first_name` = '$fname' AND `last_name` = '$lname' AND `phone_number` = '$phone'";
+			$result = mysqli_query($connObj,$query);
+			$record = mysqli_fetch_assoc($result);
+			echo "<p> Your EOI: ".$record['eoinumber']."</p>";
 		}else{
 			echo "<p>Insert operation unsuccessful.</p>";
+			die("Query statement Error (".$connObj->errno.")");
 		}
 
 		$connObj -> close();

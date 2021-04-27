@@ -44,9 +44,9 @@
 		<fieldset>
 			<legend>Gender</legend>
 			<p>
-				<input type = "radio" name = "gender" value = "Male" id = "radio_button_1">
+				<input type = "radio" name = "gender" value = "M" id = "radio_button_1">
 				<label for = "radio_button_1">Male</label>
-				<input type = "radio" name = "gender" value = "Female" id = "radio_button_2">
+				<input type = "radio" name = "gender" value = "F" id = "radio_button_2">
 				<label for = "radio_button_2">Female</label>
 				<input type = "radio" name = "gender" value = "Other" id = "radio_button_3">
 				<label for = "radio_button_3">Other</label>
