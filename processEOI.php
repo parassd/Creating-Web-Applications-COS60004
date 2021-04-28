@@ -10,13 +10,14 @@
 		<link href = "styles/style.css" rel = "stylesheet"/>
 		<script src = "scripts/apply.js"></script>
 	</head>
-	<body id = "manage_page">
+	<body id = "processEOI_page">
 		<?php
 			include_once("sidenav.inc");
 			include_once("header.inc");
 			include_once("nav.inc");
 		?>
 		<?php
+
 			function sanitise_input($data){
 				$data = trim($data);
 				$data = stripslashes($data);
@@ -122,6 +123,8 @@
 
 			// validate postcode
 			$postcode = $_POST["postcode"];
+			$state = $_POST["state"]; 
+			$state = sanitise_input($state);
 			if (isset($_POST["postcode"])){
 				$postcode = sanitise_input($postcode);
 				if($postcode == ""){
@@ -130,10 +133,8 @@
 				elseif(strlen($postcode)!==4){
 					$errmsg .= "Postcode must be exactly 4 digits. <br>";
 				}
-				$state = $_POST["state"]; 
-				$state = sanitise_input($state);
 				// validate state
-				if ($state == "VIC" && (substr($postcode,0,1)!="3" && substr($postcode,0,1)!="8")){
+				elseif ($state == "VIC" && (substr($postcode,0,1)!="3" && substr($postcode,0,1)!="8")){
 					$errmsg.="Postcode for Victoria must begin with 3 or 8. <br>";
 				}
 				elseif ($state == "NSW" && (substr($postcode,0,1)!="1" && substr($postcode,0,1)!="2")){
@@ -242,6 +243,7 @@
 					$query = "SELECT eoinumber FROM `eoi` WHERE `job_reference_number` = '$ref_id' AND `first_name` = '$fname' AND `last_name` = '$lname' AND `phone_number` = '$phone'";
 					$result = mysqli_query($connObj,$query);
 					$record = mysqli_fetch_assoc($result);
+					// save_user_data($fname,$lname,$gender,$street_address,$suburb,$state,$postcode,$email,$phone,$skills,$otherskills,$dob);
 					echo "<p> Your EOI: ".$record['eoinumber']."</p>";
 				}else{
 					echo "<p>'$query'</p>";
