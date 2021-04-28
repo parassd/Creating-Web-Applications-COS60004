@@ -93,14 +93,17 @@
 			}
 
 			// validate street address
+			$street_address = $_POST["street_address"];
+			$address_pattern = "/^[0-9a-zA-Z.\/ ]+$/";
 			if (isset($_POST["street_address"])){
 				if ($_POST["street_address"] == ""){
 					$errmsg .= "Street address is required. <br>";
 				}
-				$street_address = $_POST["street_address"];
-				$street_address = sanitise_input($street_address);
-				if (strlen($street_address) > 40){
-				$errmsg .= "Street Address cannot be more than 40 alphanumeric characters. <br>"; 	
+				elseif (strlen($street_address) > 40){
+					$errmsg .= "Street Address cannot be more than 40 alphanumeric characters. <br>"; 	
+				}
+				elseif (preg_match($address_pattern,$street_address)!=1){
+					$errmsg .= "Street address format invalid. Only ./ and alphanumeric characters allowed. <br>";
 				}
 			}
 
@@ -241,6 +244,7 @@
 					$record = mysqli_fetch_assoc($result);
 					echo "<p> Your EOI: ".$record['eoinumber']."</p>";
 				}else{
+					echo "<p>'$query'</p>";
 					echo "<p>Insert operation unsuccessful.</p>";
 					die("Query statement Error (".$connObj->errno.")");
 				}

@@ -197,7 +197,6 @@ dd {
 
 #logo{
 	float: left;
-	margin-left: 16em;
 	margin-top:0;
 	margin-right: 0;
 	padding: 0;
@@ -234,12 +233,6 @@ footer{
   body {
     width:100%; /* The width is 100%, when the viewport is 800px or smaller */
   }
-}
-
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
 }
 
 

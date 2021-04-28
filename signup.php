@@ -78,17 +78,26 @@
 		  	<label for="fullname"><b>Full name</b></label>
 		    <input type="text" placeholder="Enter Full Name" name="fullname" required>
 		    <label for="uname"><b>Username</b></label>
-		    <input type="text" placeholder="Enter Username" name="uname" required>
+		    <input type="text" placeholder="Enter Username (Must be between 5 and 20 characters)" name="uname" required>
 		    <label for="psw"><b>Password</b></label>
-		    <input type="password" placeholder="Enter Password" name="psw" required>
-		    <button type="submit">Login</button>
+		    <input type="password" placeholder="Enter Password (Must be between 5 and 20 characters)" name="psw" required>
+		    <label for="pswconfirm"><b>Confirm Password</b></label>
+		    <input type="password" placeholder="Enter Password again to confirm" name="pswconfirm" required>
+		    <button type="submit">Create Account</button>
 		</form>
 		<div>
 			<?php
 				if (isset($_GET["msg"])){
-					echo "<br>".$_GET["msg"]."<br>";
+					$msg = $_GET["msg"];
+					$checkerror = explode(" ",$msg);
+					if ($checkerror[0] == "Error:"){
+						echo "<br><p style = 'color:red'>".$_GET["msg"]."</p>";
+					}
+					else{
+						echo "<br>".$_GET["msg"]."<br>";	
+					}
 				}
-				echo "<p>Already have an account? Click <a href = 'login.php'>here</a> to sign in!</p>"
+				echo "<p>Already have an account? Click <a href = 'login.php'>here</a> to login!</p>";
 			?>
 		</div>
 		<br>

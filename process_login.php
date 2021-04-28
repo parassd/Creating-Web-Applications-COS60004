@@ -10,12 +10,12 @@
 	
 	$uname = $_POST["uname"];
 	if (!isset($_POST["uname"])){
-		$errmsg .= "Please enter your username";
+		$errmsg .= "Please enter your username<br>";
 	}
 	
 	$psw = $_POST["psw"];
 	if (!isset($_POST["uname"])){
-		$errmsg .= "Please enter your password";
+		$errmsg .= "Please enter your password<br>";
 	}
 
 		// Make Decision

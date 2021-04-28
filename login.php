@@ -1,4 +1,9 @@
-<!DOCTYPE html> 
+<?php 
+	session_start();
+	if ($_SESSION['logon']==1){ 
+	    header("location:manage.php");
+	}
+?><!DOCTYPE html> 
 <html lang="en">
 	<head>
 		<title>Super IT Consultant</title>
@@ -84,7 +89,14 @@
 		<div>
 			<?php
 				if (isset($_GET["msg"])){
-					echo "<br>".$_GET["msg"]."<br>";
+					$msg = $_GET["msg"];
+					$checkerror = explode(" ",$msg);
+					if ($checkerror[0] == "Error:"){
+						echo "<br><p style = 'color:red'>".$_GET["msg"]."</p>";
+					}
+					else{
+						echo "<br>".$_GET["msg"]."<br>";	
+					}
 				}
 				echo "<p>Don't have an account? Click <a href = 'signup.php'>here</a> to register for a new account!</p>"
 			?>

@@ -4,6 +4,8 @@
   <a href="about.php">About</a>
   <a href="jobs.php">Careers</a>
   <a href="login.php">Manage</a>
+  <a href="signup.php">Register</a>
   <a href="enhancements.php">Enhancements 1</a>
   <a href="enhancements_js.php">Enhancements 2</a>
+  <a href="enhancement_php.php">Enhancements 3</a>
 </div>

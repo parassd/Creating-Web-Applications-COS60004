@@ -108,11 +108,13 @@
 	</p>
 	<p>
 		<div>
-			<?php
-				if (isset($_GET["msg"])){
-					echo "Error: <br>".$_GET["msg"]."<br>";
-				}
-			?>
+			<p style="color:red">
+				<?php
+					if (isset($_GET["msg"])){
+						echo "Error: <br>".$_GET["msg"]."<br>";
+					}
+				?>
+			</p>
 		</div>
 	</p>
 	</form>
